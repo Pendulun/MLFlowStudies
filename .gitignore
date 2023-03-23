@@ -1,3 +1,5 @@
 venv
 data/raw/stanford_cars/
 *__pycache__**
+.coverage
+htmlcov
