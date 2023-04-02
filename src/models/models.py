@@ -30,7 +30,7 @@ class Model(ABC):
         self._device = self._define_real_device(device)
         self._model_attr = self._define_model_attr()
 
-        self._model_attr.model.to(torch.device(device))
+        self._model_attr.model.to(torch.device(self._device))
 
     def _define_real_device(self, device) -> str:
         if device[:4] == "cuda":
