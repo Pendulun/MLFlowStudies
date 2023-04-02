@@ -66,8 +66,22 @@ class Model(ABC):
         return self._model_attr.preprocess
     
     @preprocess.setter
-    def preprocess(self, preprocess):
-        self._model_attr.preprocess = preprocess
+    def preprocess(self, preprocess):        
+        model = self._model_attr.model
+        weights = self._model_attr.weights
+        new_model_attrb = ModelAttr(model=model, weights=weights, preprocess=preprocess)
+        self._model_attr = new_model_attrb
+    
+    @property
+    def device(self):
+        """
+        Returns the model's device
+        """
+        return self._device
+
+    @device.setter
+    def device(self, device):
+        raise AttributeError("device is read only")
 
 class ResnetModel(Model):
 
